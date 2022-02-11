@@ -1,0 +1,17 @@
+- 1 ou mais aprovadores ? por centro de custo.
+- 1 email por título ? sim
+- Todos os Títulos ? sim
+- Layout dos dados
+	Filial
+	Prefixo
+	Numero
+	Parcela
+	Fornecedor
+	Natureza
+	Centro Custo ?
+	Vencimento
+	Valor
+	Numero da Nota / Série
+- Anexo do financeiro e compras, atentar ...
+
+

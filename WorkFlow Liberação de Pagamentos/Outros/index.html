@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/reset.css" />
+    <link rel="stylesheet" href="./assets/bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <title>TOTVS - Liberação de Pagamentos</title>
+  </head>
+  <body>
+    <form class="needs-validation" novalidate>
+      <div class="container mt-3">
+        <div class="row">
+          <div class="col-12">TOPO</div>
+        </div>
+        <div class="row">DETALHE TITULO</div>
+        <div class="row justify-content-center">
+          <div class="col-md-3">
+            <div class="form-check m-2">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="%APROVADO%"
+                value="%APROVADO%S"
+                
+                id="libera"
+              />
+			  <!--checked="checked"-->
+              <label class="form-check-label" for="libera">Libera</label>
+            </div>
+            <div class="form-check m-2">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="%APROVADO%"
+                value="%APROVADO%N"
+                id="bloqueia"
+              />
+              <label class="form-check-label" for="bloqueia">Bloqueia</label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <input
+              type="password"
+              class="form-control"
+              id="senha"
+              placeholder="Senha de Validação"
+              required
+            />
+            <div class="invalid-feedback">
+              A digitação da senha de validação é obrigatória.
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <button class="btn btn-primary col-md-6 mt-5" type="submit">
+            Enviar
+          </button>
+        </div>
+      </div>
+    </form>
+  </body>
+  <script src="./assets/bootstrap.bundle.min.js" defer></script>
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict';
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll('.needs-validation');
+
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener(
+          'submit',
+          function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+
+            form.classList.add('was-validated');
+          },
+          false
+        );
+      });
+    })();
+	
+	/*
+	$0.checked
+	$0.onchange = function(e){console.log(e.target)}
+	*/
+	
+	
+	let $ = document.querySelector.bind(document);
+	
+	//desabilita o botão no início
+	$("button").disabled = true;
+	
+	$('#bloqueia').addEventListener("change", validaForm )
+	
+	$('#libera').addEventListener("change", validaForm )
+
+	//cria um event listener que escuta mudanças no input
+	$('input[type="password"]').addEventListener("input", validaForm );
+	
+	
+	function validaForm(event){
+
+  //busca conteúdo do input
+  if (    $('input[type="password"]').value.length > 0 &&
+	( $('#bloqueia').checked || $('#libera').checked )){
+
+    //valida conteudo do input 
+    //if (conteudo !== null && conteudo !== '') {
+      //habilita o botão
+      $("button").disabled = false;
+    } else {
+      //desabilita o botão se o conteúdo do input ficar em branco
+      $("button").disabled = true;
+    }
+}
+	
+  </script>
+</html>

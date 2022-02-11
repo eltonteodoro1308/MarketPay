@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="WIN-1252" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+</head>
+
+<body>
+  <form action="wflof580.apw" method="post">
+    <label for="LOGIN_FORM">Login:</label>
+    <input type="text" name="LOGIN_FORM" id="LOGIN_FORM" value="" disabled />
+
+    <label for="SENHA">Senha:</label>
+    <input type="password" name="SENHA" id="SENHA" />
+
+    <input type="hidden" name="LOGIN" value="%LOGIN%" />
+    <input type="hidden" name="URL_WF_APROVACAO" value="%URL_WF_APROVACAO%" />
+    <input type="hidden" name="URL_WF_LOGIN" id="URL_WF_LOGIN" value="" />
+
+    <button type="submit">Enviar</button>
+  </form>
+  <script>
+    document.querySelector('#URL_WF_LOGIN').value = window.location.href;
+    document.querySelector('input[type="text"][name="LOGIN_FORM"]').value =
+      document.querySelector('input[type="hidden"][name="LOGIN"]').value;
+
+    let $ = document.querySelector.bind(document);
+
+    botao = $('button');
+    senha = $('#SENHA');
+
+    botao.disabled = true;
+    senha.addEventListener('input', validaForm);
+
+    function validaForm(event) {
+      if (senha.value.length > 0) {
+        $('button').disabled = false;
+      } else {
+        $('button').disabled = true;
+      }
+    }
+  </script>
+</body>
+
+</html>
