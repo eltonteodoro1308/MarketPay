@@ -5,23 +5,40 @@
   <meta charset="WIN-1252" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./assets/reset.css" />
+  <link rel="stylesheet" href="./assets/bootstrap.min.css" />
+  <link rel="stylesheet" href="./assets/styles.css" />
   <title>Login</title>
 </head>
 
 <body>
-  <form action="wflof580.apw" method="post">
-    <label for="LOGIN_FORM">Login:</label>
-    <input type="text" name="LOGIN_FORM" id="LOGIN_FORM" value="" disabled />
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6 card bg-light p-5">
+        <form action="wflof580.apw" method="post">
+          <fieldset>
+            <img src="./assets/marketpaylogo.png" class="img-fluid" />
+            <div class="mb-3">
+              <label class="form-label" for="LOGIN_FORM">Login:</label>
+              <input class="form-control" type="text" name="LOGIN_FORM" id="LOGIN_FORM" value="" disabled />
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="SENHA">Senha:</label>
+              <input class="form-control" type="password" name="SENHA" id="SENHA" />
+            </div>
+            <input type="hidden" name="LOGIN" value="%LOGIN%" />
+            <input type="hidden" name="URL_WF_APROVACAO" value="%URL_WF_APROVACAO%" />
+            <input type="hidden" name="URL_WF_LOGIN" id="URL_WF_LOGIN" value="" />
+            <div class="d-grid gap-2">
 
-    <label for="SENHA">Senha:</label>
-    <input type="password" name="SENHA" id="SENHA" />
+              <button class="btn btn-primary col-6 mx-auto" type="submit">Enviar</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
 
-    <input type="hidden" name="LOGIN" value="%LOGIN%" />
-    <input type="hidden" name="URL_WF_APROVACAO" value="%URL_WF_APROVACAO%" />
-    <input type="hidden" name="URL_WF_LOGIN" id="URL_WF_LOGIN" value="" />
-
-    <button type="submit">Enviar</button>
-  </form>
   <script>
     document.querySelector('#URL_WF_LOGIN').value = window.location.href;
     document.querySelector('input[type="text"][name="LOGIN_FORM"]').value =

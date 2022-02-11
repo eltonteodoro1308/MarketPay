@@ -5,51 +5,108 @@
     <meta charset="WIN-1252" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/reset.css" />
+    <link rel="stylesheet" href="./assets/bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/styles.css" />
     <title>Aprovação</title>
 </head>
 
 <body>
-    <p>Liberação de Pagamento</p>
-    <form action="wfhttpret.apw" method="post">
-        <label for="EMP_FIL_NOME">Empresa/Filial/Nome</label>
-        <input type="text" name="%EMP_FIL_NOME%" id="EMP_FIL_NOME" value="%EMP_FIL_NOME%" disabled />
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-12 card bg-light p-5">
+                <form action="wfhttpret.apw" method="post">
+                    <div class="container">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-12 mb-3">
+                                    <img src="./assets/marketpaylogo.png" class="img-fluid mb-3" />
+                                    <legend class="mb-3">Liberação de Pagamento</legend>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label" for="EMP_FIL_NOME">Empresa/Filial/Nome</label>
+                                    <input class="form-control" type="text" name="%EMP_FIL_NOME%" id="EMP_FIL_NOME"
+                                        value="%EMP_FIL_NOME%" disabled />
+                                </div>
+                                <div class="col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label" for="PRE_NUM_PARC">Prefixo/Número/Parcela</label>
+                                    <input class="form-control" type="text" name="%PRE_NUM_PARC%" id="PRE_NUM_PARC"
+                                        value="%PRE_NUM_PARC%" disabled />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label" for="FORN_LOJ_NOME">Fornecedor/Loja/Nome</label>
+                                    <input class="form-control" type="text" name="%FORN_LOJ_NOME%" id="FORN_LOJ_NOME"
+                                        value="%FORN_LOJ_NOME%" disabled />
+                                </div>
 
-        <label for="PRE_NUM_PARC">Prefixo/Número/Parcela</label>
-        <input type="text" name="%PRE_NUM_PARC%" id="PRE_NUM_PARC" value="%PRE_NUM_PARC%" disabled />
+                                <div class="col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label" for="NAT_DESCR">Natureza/Descrição</label>
+                                    <input class="form-control" type="text" name="%NAT_DESCR%" id="NAT_DESCR"
+                                        value="%NAT_DESCR%" disabled />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label" for="CC_NOME">Centro de Custos/Nome</label>
+                                    <input class="form-control" type="text" name="%CC_NOME%" id="CC_NOME"
+                                        value="%CC_NOME%" disabled />
+                                </div>
+                                <div class="col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label" for="VENCIMENTO">Vencimento</label>
+                                    <input class="form-control" type="text" name="%VENCIMENTO%" id="VENCIMENTO"
+                                        value="%VENCIMENTO%" disabled />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label" for="VALOR">Valor</label>
+                                    <input class="form-control" type="text" name="%VALOR%" id="VALOR" value="%VALOR%"
+                                        disabled />
+                                </div>
+                                <div class="col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label" for="TIPO_DESCR">Tipo/Descrição</label>
+                                    <input class="form-control" class="form-label" type="text" name="%TIPO_DESCR%"
+                                        id="TIPO_DESCR" value="%TIPO_DESCR%" disabled />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 col-sm-3 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" id="LIBERA" type="radio" name="%LIBERA%"
+                                            value="%LIBERA%S" />
+                                        <label class="form-check-label" for="LIBERA">Libera</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-3 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" id="BLOQUEIA" type="radio" name="%LIBERA%"
+                                            value="%LIBERA%N" />
+                                        <label class="form-check-label" for="BLOQUEIA">Bloqueia</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button class="btn btn-primary ms-2" type="submit">
+                                    Enviar
+                                </button>
+                            </div>
 
-        <label for="FORN_LOJ_NOME">Fornecedor/Loja/Nome</label>
-        <input type="text" name="%FORN_LOJ_NOME%" id="FORN_LOJ_NOME" value="%FORN_LOJ_NOME%" disabled />
-
-        <label for="NAT_DESCR">Natureza/Descrição</label>
-        <input type="text" name="%NAT_DESCR%" id="NAT_DESCR" value="%NAT_DESCR%" disabled />
-
-        <label for="CC_NOME">Centro de Custos/Nome</label>
-        <input type="text" name="%CC_NOME%" id="CC_NOME" value="%CC_NOME%" disabled />
-
-        <label for="VENCIMENTO">Vencimento</label>
-        <input type="text" name="%VENCIMENTO%" id="VENCIMENTO" value="%VENCIMENTO%" disabled />
-
-        <label for="VALOR">Valor</label>
-        <input type="text" name="%VALOR%" id="VALOR" value="%VALOR%" disabled />
-
-        <label for="TIPO_DESCR">Tipo/Descrição</label>
-        <input type="text" name="%TIPO_DESCR%" id="TIPO_DESCR" value="%TIPO_DESCR%" disabled />
-
-        <input id="LIBERA" type="radio" name="%LIBERA%" value="%LIBERA%S" />
-        <label for="LIBERA">Libera</label>
-
-        <input id="BLOQUEIA" type="radio" name="%LIBERA%" value="%LIBERA%N" />
-        <label for="BLOQUEIA">Bloqueia</label>
-
-        <input type="hidden" name="%RECNO%" value="%RECNO%" />
-        <input type="hidden" name="%LOGIN%" value="%LOGIN%" />
-
-        <button type="submit">Enviar</button>
-    </form>
+                            <input type="hidden" name="%RECNO%" value="%RECNO%" />
+                            <input type="hidden" name="%LOGIN%" value="%LOGIN%" />
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 <script>
     let $ = document.querySelector.bind(document);
-   
+
     botao = $('button');
     bloqueado = $('#BLOQUEIA');
     liberado = $('#LIBERA');
