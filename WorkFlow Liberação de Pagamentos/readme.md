@@ -13,4 +13,5 @@
 5. Defnir os campos E2_XWFSEND, E2_XCCAPRV na Aba Dados Gerais do Contas a Pagar
 6. Defnir o campo CTT_XUSAPR na aba Cadastro do Centos de Custos
 7. Cadastrar gatilhos dos campos E2_MOEDA e E2_XCCAPR
-8. Verificar compartilhamento das tabelas envolvidas
+8. Cadastrar os parametros MV_HOSTLG e MV_HOSTWF
+9. Verificar compartilhamento das tabelas envolvidas

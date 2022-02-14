@@ -13,8 +13,6 @@ user function WFFIN580(aParam)
 	local cEmp := aParam[ nTam - 3 ]
 	local cFil := aParam[ nTam - 2 ]
 
-
-
 	if RpcSetEnv( cEmp, cFil )
 
 		if LockByName("WFFIN580", .T., .F.)
@@ -113,8 +111,8 @@ return
 static function EnviaWf( cAlias )
 
 	local oProcess   := TWFProcess():New( '000001' )
-	local cHostWf    := 'http://127.0.0.1:10002/wf/'
-	local cHostLogin := 'http://127.0.0.1:10002/login/'
+	local cHostWf    := AllTrim( GetMv( 'MV_HOSTWF' ) )
+	local cHostLogin := AllTrim( GetMv( 'MV_HOSTLG' ) )
 	local cMailId    := ''
 	local cLoginId   := ''
 	local nX         := 0
@@ -142,7 +140,7 @@ static function EnviaWf( cAlias )
 
 	oProcess:bReturn  := 'U_WFRTF580'
 
-	cMailId := oProcess:Start( '\workflow\tasks\aprovacao\')
+	cMailId := oProcess:Start( '\workflow\tasks\')
 
 	/** Login */
 
@@ -151,7 +149,7 @@ static function EnviaWf( cAlias )
 	oProcess:oHTML:ValByName( 'LOGIN'            , ( cAlias )->( USR_CODIGO ) )
 	oProcess:oHTML:ValByName( 'URL_WF_APROVACAO' , cHostWf + cMailId + '.htm' )
 
-	cLoginId := oProcess:Start( '\workflow\tasks\login\')
+	cLoginId := oProcess:Start( '\workflow\tasks\')
 
 	/** Email */
 
