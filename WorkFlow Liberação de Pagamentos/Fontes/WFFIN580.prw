@@ -2,7 +2,7 @@
 
 user function tstwff580()
 
-	u_WFFIN580( { '','','','99','01','','' } )
+	u_WFFIN580( { '','','','01','01','','' } )
 
 
 return
@@ -59,7 +59,7 @@ static function ProcWf()
 
 		FROM %TABLE:SE2% SE2
 
-		INNER JOIN CTT990 CTT ON
+		INNER JOIN %TABLE:CTT% CTT ON
 		SE2.E2_FILIAL=CTT.CTT_FILIAL AND
 		SE2.E2_XCCAPRV = CTT.CTT_CUSTO AND
 		SE2.D_E_L_E_T_ = CTT.D_E_L_E_T_
@@ -123,18 +123,20 @@ static function EnviaWf( cAlias )
 	Local cExecSql   := ''
 	Local nStatus    := 0
 
+	Set(_SET_DATEFORMAT, 'mm/dd/yyyy')
+
 	/** Aprovacao */
 
 	oProcess:NewTask( 'APROVACAO', '\workflow\models\aprovacao.html' )
 
-	oProcess:oHTML:ValByName( 'EMP_FIL_NOME'  , ( cAlias )->( M0_CODIGO + '/' + M0_CODFIL + '/' + M0_NOMECOM ) )
-	oProcess:oHTML:ValByName( 'PRE_NUM_PARC'  , ( cAlias )->( E2_PREFIXO + '/' + E2_NUM + '/' + E2_PARCELA ) )
-	oProcess:oHTML:ValByName( 'FORN_LOJ_NOME' , ( cAlias )->( A2_COD + '/' + A2_LOJA + '/' + A2_NREDUZ ) )
-	oProcess:oHTML:ValByName( 'NAT_DESCR'     , ( cAlias )->( ED_CODIGO + '/' + ED_DESCRIC ) )
-	oProcess:oHTML:ValByName( 'CC_NOME'       , ( cAlias )->( CTT_CUSTO + '/' + CTT_DESC01 ) )
-	oProcess:oHTML:ValByName( 'VENCIMENTO'    , ( cAlias )->( E2_VENCREA ) )
-	oProcess:oHTML:ValByName( 'VALOR'         , ( cAlias )->( E2_VLCRUZ ) )
-	oProcess:oHTML:ValByName( 'TIPO_DESCR'    , ( cAlias )->( E2_TIPO + '/' + X5_DESCRI ) )
+	oProcess:oHTML:ValByName( 'EMP_FIL_NOME'  , ( cAlias )->( AllTrim( M0_CODIGO ) + ' / ' + AllTrim( M0_CODFIL ) + ' / ' + AllTrim( M0_NOMECOM ) ) )
+	oProcess:oHTML:ValByName( 'PRE_NUM_PARC'  , ( cAlias )->( AllTrim( E2_PREFIXO ) + ' / ' + AllTrim( E2_NUM ) + ' / ' + AllTrim( E2_PARCELA ) ) )
+	oProcess:oHTML:ValByName( 'FORN_LOJ_NOME' , ( cAlias )->( AllTrim( A2_COD ) + ' / ' + AllTrim( A2_LOJA ) + ' / ' + AllTrim( A2_NREDUZ ) ) )
+	oProcess:oHTML:ValByName( 'NAT_DESCR'     , ( cAlias )->( AllTrim( ED_CODIGO ) + ' / ' + AllTrim( ED_DESCRIC ) ) )
+	oProcess:oHTML:ValByName( 'CC_NOME'       , ( cAlias )->( AllTrim( CTT_CUSTO ) + ' / ' + AllTrim( CTT_DESC01 ) ) )
+	oProcess:oHTML:ValByName( 'VENCIMENTO'    , ( cAlias )->( StoD( E2_VENCREA ) ) )
+	oProcess:oHTML:ValByName( 'VALOR'         , ( cAlias )->( 'R$ ' + Alltrim( Transform( E2_VLCRUZ, '@E 9,999,999,999,999.99' ) ) ) )
+	oProcess:oHTML:ValByName( 'TIPO_DESCR'    , ( cAlias )->( AllTrim( E2_TIPO ) + ' / ' + AllTrim( X5_DESCRI ) ) )
 	oProcess:oHTML:ValByName( 'RECNO'         , ( cAlias )->( E2_RECNO ) )
 	oProcess:oHTML:ValByName( 'LOGIN'         , ( cAlias )->( USR_CODIGO ) )
 

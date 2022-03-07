@@ -23,15 +23,15 @@ USER Function ASPConn()
 
 		case cAspPage == 'wflof580'
 
-			conout(HTTPPOST->LOGIN)
-			conout(HTTPPOST->SENHA)
+			//conout(HTTPPOST->LOGIN)
+			//conout(HTTPPOST->SENHA)
 
 			if ! Empty( HTTPPOST->LOGIN ) .And. ! Empty( HTTPPOST->SENHA ) .And.;
-					RpcSetEnv( '99', '01', HTTPPOST->LOGIN, HTTPPOST->SENHA )
-
-				cMensagem := 'Login executado com sucesso.'
+					RpcSetEnv( '01', '01', HTTPPOST->LOGIN, HTTPPOST->SENHA )
 
 				cRedirect := HTTPPOST->URL_WF_APROVACAO
+
+				cMensagem := 'Login executado com sucesso.'
 
 				RpcClearEnv()
 
@@ -40,6 +40,8 @@ USER Function ASPConn()
 				cRedirect := HTTPPOST->URL_WF_LOGIN
 
 				cMensagem := 'Erro ao executar o Login'
+
+				RpcClearEnv()
 
 			end if
 

@@ -15,6 +15,7 @@ user function X7Aprov()
 	local cUser  := ''
 	local cAprov := ''
 	local aArea  := GetArea()
+	local cMoeda := STRZERO( M->E2_MOEDA, 2 )
 
 	DbSelectArea('CTT')
 	CTT->( DbSetOrder( 1 ) )
@@ -23,12 +24,24 @@ user function X7Aprov()
 
 		cUser := CTT->CTT_XUSAPR
 
-		DbSelectArea('FRP')
-		FRP->( DbSetOrder( 2 ) )
+		if !Empty( cUser )
 
-		if DbSeek( XFILIAL("FRP") + cUser + STRZERO( M->E2_MOEDA, 2 ) )
+			DbSelectArea('FRP')
+			FRP->( DbSetOrder( 2 ) )
 
-			cAprov := FRP->FRP_COD
+			if DbSeek( XFILIAL("FRP") + cUser + cMoeda )
+
+				cAprov := FRP->FRP_COD
+
+			else
+
+				ApMsgAlert( 'O Usuário aprovador deste Centro de Custo não tem autorização de liberar para a moeda ' + cMoeda )
+
+			end if
+
+		else
+
+			ApMsgAlert( 'Este Centro de Custo não tem usuário aprovador vinculado' )
 
 		end if
 
